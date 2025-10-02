@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abdul Aziz Awami Store</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Abdul Aziz Awami Store</h1>
+        <button id="billing-button">Billing</button>
+        <button id="inventory-button" style="display:none;">Inventory</button>
+    </header>
+    <main>
+        <section id="inventory-section">
+            <section id="add-product">
+                <h2>Add New Product</h2>
+                <form id="product-form">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" required />
+
+                    <label for="product-price">Price per Unit:</label>
+                    <input type="number" id="product-price" step="0.01" min="0" required />
+
+                    <label for="product-quantity">Quantity:</label>
+                    <input type="number" id="product-quantity" step="0.01" min="0" required />
+
+                    <label for="product-unit">Measuring Unit:</label>
+                    <select id="product-unit" required>
+                        <option value="kg">kg</option>
+                        <option value="piece">piece</option>
+                        <option value="liter">liter</option>
+                        <option value="dozen">dozen</option>
+                        <option value="gram">gram</option>
+                        <option value="ml">ml</option>
+                        <option value="pack">pack</option>
+                    </select>
+
+                    <button type="submit">Add Product</button>
+                    <button type="button" id="cancel-edit" style="display: none;">Cancel</button>
+                </form>
+            </section>
+            <section id="product-list">
+                <h2>Available Products</h2>
+                <input type="text" id="search-input" placeholder="Search by name or inventory number..." />
+                <table id="products-table">
+                    <thead>
+                        <tr>
+                            <th>Inventory Number</th>
+                            <th>Name</th>
+                            <th>Price per Unit</th>
+                            <th>Quantity</th>
+                            <th>Total Value</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-body">
+                        <!-- Products will be inserted here -->
+                    </tbody>
+                </table>
+            </section>
+        </section>
+
+        <!-- Separate Billing Section (initially hidden) -->
+        <section id="billing-section" style="display:none;">
+            <h2>Billing</h2>
+            <div id="billing-tabs">
+                <button id="current-bill-tab" class="active-tab">Current Bill</button>
+                <button id="billing-history-tab">Billing History</button>
+            </div>
+            <div id="billing-content">
+                <div id="current-bill-view">
+                    <form id="billing-form">
+                        <div class="billing-input-group">
+                            <label for="bill-product-name">Product Name:</label>
+                            <input type="text" id="bill-product-name" required />
+                            <div id="product-suggestions" class="suggestions-dropdown"></div>
+                        </div>
+                        <div class="billing-input-group">
+                            <label for="bill-product-price">Price per Unit:</label>
+                            <input type="number" id="bill-product-price" step="0.01" min="0" required />
+                        </div>
+                        <div class="billing-input-group">
+                            <label for="bill-product-quantity">Quantity:</label>
+                            <input type="number" id="bill-product-quantity" step="0.01" min="0" required />
+                        </div>
+                        <div class="billing-input-group">
+                            <label for="bill-product-unit">Measuring Unit:</label>
+                            <select id="bill-product-unit" required>
+                                <option value="kg">kg</option>
+                                <option value="piece">piece</option>
+                                <option value="liter">liter</option>
+                                <option value="dozen">dozen</option>
+                                <option value="gram">gram</option>
+                                <option value="ml">ml</option>
+                                <option value="pack">pack</option>
+                            </select>
+                        </div>
+                        <button type="submit">Add to Bill</button>
+                    </form>
+                    <div id="billing-summary">
+                        <h3>Current Bill</h3>
+                        <table id="billing-table">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Price per Unit</th>
+                                    <th>Total Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="billing-body">
+                                <!-- Billing items will be inserted here -->
+                            </tbody>
+                        </table>
+                        <div id="billing-total-container">
+                            <strong>Total Bill: </strong><span id="billing-total">0.00</span>
+                        </div>
+                        <button id="download-bill">Download Bill</button>
+                        <button id="complete-bill">Complete Bill</button>
+                    </div>
+                </div>
+                <div id="billing-history-view" style="display:none;">
+                    <h3>Billing History</h3>
+                    <div id="billing-history-list">
+                        <!-- Billing history will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
